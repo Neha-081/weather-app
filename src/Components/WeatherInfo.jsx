@@ -8,29 +8,34 @@ function WeatherInfo() {
         data:[]
     }
     const [state,setState]=useState(initialState);
+    const [loading,setLoading]=useState(false)
+    const apiKey=process.env.REACT_APP_API_KEY
 
     const handleChange=(e)=>{
         setState({...state,query:e.target.value})
     }
     const handleSearch=()=>{
+        setLoading(true)
       axios({
           method:"get",
           baseURL:"http://api.weatherapi.com/v1",
           url:"/current.json",
           params:{
-              key:"15913a882a854372910190402220803",
-              q:state.query
+              key:apiKey,
+              q:state.query || "delhi"
           }
       })
       .then(res=>setState({...state,data:res.data}))
       .then(error=>console.log(error))
+      .finally(()=>setLoading(false))
     }
     console.log(state);
   return (
     <div>
-        <h1>Waether Information</h1>
+        <h1>Weather Information</h1>
         <input placeholder='Enter City Name..' value={state.query} onChange={handleChange}/>
         <button onClick={handleSearch}>Search</button>
+        {loading  && <h3>Loading...</h3>}
         {state?.data?.location && 
         <h2>{state?.data?.location?.name}</h2>}
 
