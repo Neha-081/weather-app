@@ -5,6 +5,7 @@ import "./Products.css"
 
 function ProductDetail() {
     const param=useParams()
+    console.log(param);
   const [data,setData]=useState([])
 
 useEffect(()=>{

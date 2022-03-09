@@ -4,6 +4,7 @@ import { ThemeContext } from '../context/ThemeContext';
 import styles from './Login.module.css'
 import ThemeButton from './ThemeButton';
 import WeatherInfo from './WeatherInfo';
+import {Redirect} from 'react-router-dom'
 
 function Login() {
  const [state,setState]=useState({email:"",password:""})
@@ -37,7 +38,6 @@ const {theme}=useContext(ThemeContext)
     </div> : 
     <WeatherInfo isAuth={isAuth}/>
     }
-    <ThemeButton/>
     </div>
   )
 }

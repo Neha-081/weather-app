@@ -35,7 +35,7 @@ function WeatherInfo() {
       .then(error=>console.log(error))
       .finally(()=>setLoading(false))
     }
-    console.log(state);
+    // console.log(state);
   return (
     <div>
       <h2>token is : {token}</h2>
