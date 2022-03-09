@@ -2,6 +2,7 @@ import React, { useContext, useState } from 'react'
 import { AuthContext } from '../context/AuthContext';
 import { ThemeContext } from '../context/ThemeContext';
 import styles from './Login.module.css'
+import ThemeButton from './ThemeButton';
 import WeatherInfo from './WeatherInfo';
 
 function Login() {
@@ -31,11 +32,12 @@ const {theme}=useContext(ThemeContext)
          onChange={(e)=>setState({...state,password:e.target.value})}
          placeholder="Enter Password" 
          />
-        <input type="submit" value="login"/>
+        <input type="submit" value="Login"/>
         </form>
     </div> : 
     <WeatherInfo isAuth={isAuth}/>
     }
+    <ThemeButton/>
     </div>
   )
 }

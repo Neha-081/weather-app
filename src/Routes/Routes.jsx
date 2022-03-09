@@ -5,6 +5,7 @@ import Home from '../Pages/Home'
 import Products from '../Pages/Products'
 import { Routes } from 'react-router'
 import Login from '../Components/Login'
+import ProductDetail from '../Pages/ProductDetail'
 
 function RoutesConatiner() {
   return (
@@ -14,6 +15,7 @@ function RoutesConatiner() {
         <Route path='/about' element={<About/>}/>
         <Route path='/products' element={<Products/>}/>
         <Route path='/login' element={<Login/>}/>
+        <Route path='/products/:productid' element={<ProductDetail/>}/>
         </Routes>
     </div>
   )
