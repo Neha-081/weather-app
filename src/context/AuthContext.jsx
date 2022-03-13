@@ -23,7 +23,11 @@ const AuthContextProvider=({children})=>{
         .catch(err=>console.log(err))
     }
 
-    const value={isAuth,handleLogin,token}
+    const handleLogout=()=>{
+        setToken("")
+        setIsAuth(false)
+    }
+    const value={isAuth,handleLogin,token,handleLogout}
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>
 }
 

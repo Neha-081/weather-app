@@ -1,11 +1,23 @@
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React, { useContext } from 'react'
+import { Link, NavLink } from 'react-router-dom'
+import { AuthContext } from '../context/AuthContext'
 function Navbar() {
+
+
+
+const {token}=useContext(AuthContext);
+const getTitle=()=>{
+    if(token){
+        return ["Logout","/logout"]
+    }
+    return ["Login","/login"]
+    
+}
 
 const links=[
     {
         title:"home",
-        to:"/"
+        to:"/home"
     },
     {
         title:"about",
@@ -16,15 +28,17 @@ const links=[
         to:"/products"
     },
     {
-        title:"login",
-        to:"/login"
+        title:getTitle()[0],
+        to:getTitle()[1]
     },
 ]
 
   return (
     <div style={{padding:15,backgroundColor:"gray"}}>
         {links.map(({title,to},index)=>(
-            <Link key={index} to={to} style={{padding:10,textDecoration:"none",color:"black"}}>{title} </Link>
+            <NavLink key={index} to={to} style={({isActive})=>({
+                color:isActive?"red":"blue",padding:10
+            })}>{title} </NavLink>
         ))}
     </div>
   )
